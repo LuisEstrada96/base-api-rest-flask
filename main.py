@@ -1,12 +1,16 @@
 from flask import Flask, request
 from flask_restful import Api
-from resources.respondents.respondent import Respondent
-
+from resources.respondent import Respondent
+from libs.logger import Logger
+from config.config import general as config
 app = Flask(__name__)
 api = Api(app)
+log = Logger()
 
 # Routes
-api.add_resource(Respondent, '/respondent','/respondent/<int:id>')    # GET
+api.add_resource(Respondent, '/respondent','/respondent/<name>')
 #-------
 if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1', port=5000)
+    log.info('Server listen in %s:%s' %(config['host'], config['port']))
+    app.run(debug=True, host=config['host'], port=config['port'])
+   
