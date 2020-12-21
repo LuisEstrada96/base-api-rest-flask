@@ -13,4 +13,3 @@ api.add_resource(Respondent, '/respondent','/respondent/<name>')
 if __name__ == '__main__':
     log.info('Server listen in %s:%s' %(config['host'], config['port']))
     app.run(debug=True, host=config['host'], port=config['port'])
-   
